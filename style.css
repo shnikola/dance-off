@@ -1,0 +1,17 @@
+.screen {
+  padding: 30px;
+}
+
+.player {
+  height: 288px;
+  width: 236px;
+  background-position: 0px 0px;
+}
+
+#jopa {
+  background-image: url(img/jopa-2.png);
+}
+
+#asja {
+  background-image: url(img/asja.png);
+}
