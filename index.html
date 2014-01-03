@@ -5,14 +5,33 @@
 	<title>Asja Party Dance-Off!!!</title>
 	<meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
+  <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
 </head>
   
 <body>
-  <div class="screen">
+  <div id="title-screen" class="screen">
+    
+    <h1>Asja's Big Birthday/Christmas/New year DANCE OFF!</h1>
+    <h2 id="start-game">Insert coin</h2>
   
-    <div id="jopa" class="player"></div>
-    <div id="asja" class="player"></div>
+  </div>
   
+  <div id="game-screen" class="screen">
+    
+    <div id="countdown"></div>
+    
+    <div id="asja" class="player-area hidden">
+      <div class="task">&nbsp;</div>
+      <div class="player hidden"></div>
+      <h3 class="name hidden">Asja</h3>
+    </div>
+
+    <div id="jopa" class="player-area">
+      <div class="task">&nbsp;</div>
+      <div class="player hidden"></div>
+      <h3 class="name hidden">Jopa</h3>
+    </div>
+        
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
