@@ -13,19 +13,44 @@ html {
   visibility: hidden;
 }
 
-#title-screen h1 {
+#title-screen {
   text-align: center;
-  font-size: 40px;
-  line-height: 50px;
-  margin: 50px 0 100px 0;
 }
 
 #title-screen h2 {
+  font-size: 40px;
+  line-height: 50px;
+  margin: 50px 0 40px 0;
+}
+
+#title-screen h1 {
+  font-size: 90px;
+  line-height: 120px;
+  margin: 50px 0 30px 0;
+}
+
+#title-screen hr {
+  margin: 0;
+  border: none;
+  border-top: 8px solid white;
+}
+
+#title-screen hr.red { border-color: #b8281b; }
+#title-screen hr.orange { border-color: #ca7840; }
+#title-screen hr.blue { border-color: #346afa; }
+#title-screen hr.green { border-color: green; }
+#title-screen hr.yellow { border-color: #edc278 }
+
+#title-screen h3 {
+  margin-top: 60px;
   color: rgb(253, 248, 78);
   cursor: pointer;
-  text-align: center;
   font-size: 20px;
   text-transform: uppercase;
+}
+
+#start-game {
+  display: none;
 }
 
 #game-screen {

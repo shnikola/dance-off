@@ -65,6 +65,10 @@ function updateParticles() {
 
 function startConfetti() {
   initCanvas();
-	setInterval(drawCanvas, 33);
+  canvas.animationInterval = setInterval(drawCanvas, 33);
 }
 
+function stopConfetti() {
+	canvas.ctx.clearRect(0, 0, canvas.W, canvas.H);
+  clearInterval(canvas.animationInterval);
+}

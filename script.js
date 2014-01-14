@@ -21,6 +21,7 @@ var sounds = {
   coin: new Audio("http://www.basementarcade.com/arcade/sounds/domman/coin%20up.wav"),
   music: new Audio("tune1.mp3"),
   bonus: new Audio("http://themushroomkingdom.net/sounds/wav/smb/smb_flagpole.wav"),
+  point: new Audio("http://themushroomkingdom.net/sounds/wav/smb/smb_coin.wav"),
   win: new Audio("http://themushroomkingdom.net/sounds/wav/smb/smb_world_clear.wav")
 };
 
@@ -71,7 +72,13 @@ $(function() {
 });
 
 function titleScreen() {
-  $("#title-screen").show();
+  sounds["music"].addEventListener('canplaythrough', function() {
+    $("#loading").hide();
+    $("#start-game").show();
+  });
+  
+  $("#title-screen").show();  
+  
   $("#start-game").click(function() {
     sounds["coin"].play();
     $("#title-screen").fadeOut(1000, gameScreen);
@@ -164,7 +171,7 @@ function generateTask(player) {
   if (game.interacting) {
     setTimeout(function() { generateTask(player); }, game.randomTaskLength());
   } else {
-    $(".player-area .task").addClass("hidden").removeClass("left up down right");
+    $(".player-area .task").addClass("hidden").removeClass("left right center bottom");
   }
 }
 
@@ -181,17 +188,22 @@ function setHardening() {
   }, 7000);
   
   // Change background color
-  setTimeout(changeBackground, 30000);
+  setTimeout(changeBackground, 32000);
   
   // Make tasks moveable  
   setTimeout(function() { game.taskDifficulty = 1 }, 54000);
   
-  setTimeout(startConfetti, 74000)
+  // Throw Confetti
+  setTimeout(startConfetti, 77000);
+  
+  // Speed up background
+  setTimeout(function() { game.backgroundInterval = 100; }, 77000);
+  
+
 }
 
 function changeBackground() {
   $("html").css("background-color", randomColor());
-  if (Math.random > 0.8) game.backgroundInterval = Math.max(100, game.animationInterval - 50);
   if (game.interacting) setTimeout(changeBackground, game.backgroundInterval);
 }
 
@@ -242,7 +254,6 @@ function endGame() {
   game.interacting = false;
   game.animationInterval = 320;
   $("#game-over").html("Time's up!").removeClass("hidden");
-  $("html").css("background-color", "#373337");
   document.onkeydown = null;
   jopa.state = ["idle", 0, 0]; 
   asja.state = ["idle", 0, 0];
@@ -257,8 +268,9 @@ function endGame() {
 function birthdayBonus() {
   asja.area().append("<div class='bonus'>Birthday bonus!</div>");
   sounds["bonus"].play();
-  asja.area().find(".bonus").animate({bottom: 90}, 1000, "linear").animate({opacity: 0}, 1000, "swing")
+  asja.area().find(".bonus").animate({bottom: 90}, 1000, "linear").animate({opacity: 0}, 1000, "swing");
   addPoints(asja, jopa.points - asja.points + 1)
+  setTimeout(function() { sounds["point"].play(); }, 2000);
 }
 
 function showWinner() {
@@ -284,5 +296,7 @@ function restartGame() {
   $(".player-area").removeClass("winning");
   jopa.points = asja.points = 0;
   $(".points").addClass("hidden").html("0");
+  $("html").css("background-color", "#373337");
+  stopConfetti();
   gameScreen();
 }
