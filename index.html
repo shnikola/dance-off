@@ -17,25 +17,34 @@
   </div>
   
   <div id="game-screen" class="screen">
+    <canvas id="canvas"></canvas>
     
     <div id="countdown"></div>
-    
-    <div id="asja" class="player-area hidden">
+
+    <div id="asja" class="player-area">
       <div class="task">&nbsp;</div>
       <div class="player hidden"></div>
       <h3 class="name hidden">Asja</h3>
+      <h4 class="controls hidden">(w,a,s,d)</h3>
+      <h4 class="points hidden">0</h4>
     </div>
 
     <div id="jopa" class="player-area">
       <div class="task">&nbsp;</div>
       <div class="player hidden"></div>
       <h3 class="name hidden">Jopa</h3>
+      <h4 class="controls hidden">(arrows)</h3>
+      <h4 class="points hidden">0</h4>
     </div>
-        
+    
+    <div id="game-over" class="hidden"></div>
+    <div id="play-again" class="hidden">Play again?</div>
+    
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="script.js"></script>
+  <script src="canvas.js"></script>
 
 </body>
 
